@@ -4,9 +4,14 @@ updates:
   schedule:
     interval: weekly
 - directory: /
+  groups:
+    codeql-action:
+      patterns:
+      - "github/codeql-action/*"
   ignore:
   - dependency-name: "github/gh-aw-actions/**"
   - dependency-name: "github/gh-aw-actions" # Managed by gh aw compile. Version-locked to the gh-aw compiler; do not bump.
+  - dependency-name: "astral-sh/setup-uv" # Update with gh aw compile so generated workflows stay in sync.
   package-ecosystem: github-actions
   schedule:
     interval: weekly
