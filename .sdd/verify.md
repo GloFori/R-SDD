@@ -15,6 +15,9 @@
   catalog, English README, Chinese README, and fork notice identify
   `https://github.com/GloFori/R-SDD`; upstream links remain for attribution and
   synchronization.
+- Publication — PASS — `main` and `codex/rsdd-team-onboarding` were pushed to
+  `GloFori/R-SDD`; Draft PR #1 records the implementation and verification
+  handoff.
 
 Commands:
 
