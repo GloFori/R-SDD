@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 WORKFLOWS_DIR = REPO_ROOT / ".github" / "workflows"
@@ -39,6 +40,25 @@ def test_pinned_action_ref_accepts_uppercase_hex_sha():
     assert PINNED_SHA_RE.search(
         "actions/example@0123456789ABCDEF0123456789ABCDEF01234567"
     )
+
+
+def test_dependabot_coordinates_coupled_action_updates():
+    config = yaml.safe_load(
+        (REPO_ROOT / ".github" / "dependabot.yml").read_text(encoding="utf-8")
+    )
+    github_actions = next(
+        update
+        for update in config["updates"]
+        if update["package-ecosystem"] == "github-actions"
+    )
+
+    assert github_actions["groups"]["codeql-action"]["patterns"] == [
+        "github/codeql-action/*"
+    ]
+    ignored_dependencies = {
+        rule["dependency-name"] for rule in github_actions["ignore"]
+    }
+    assert "astral-sh/setup-uv" in ignored_dependencies
 
 
 def test_community_bundle_submission_automation_is_wired():
