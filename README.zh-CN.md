@@ -20,6 +20,12 @@
     <strong>简体中文</strong>
 </p>
 
+> **R-SDD 分支：**本仓库由
+> [`GloFori/R-SDD`](https://github.com/GloFori/R-SDD) 独立维护。仓库保留
+> Spec Kit 的 MIT 许可基础，并把
+> [`github/spec-kit`](https://github.com/github/spec-kit) 作为只用于同步的上游；
+> R-SDD 的修改和贡献提交到 GloFori 仓库。
+
 ---
 
 ## 目录
@@ -31,6 +37,7 @@
 - [🤖 支持的 AI 编码助手集成](#-支持的-ai-编码助手集成)
 - [🔧 Specify CLI 参考](#-specify-cli-参考)
 - [🧩 打造你自己的 Spec Kit：扩展与预设](#-打造你自己的-spec-kit扩展与预设)
+- [🔬 研究规范驱动开发（R-SDD）](#-研究规范驱动开发r-sdd)
 - [📦 捆绑包：面向角色的一键配置](#-捆绑包面向角色的一键配置)
 - [📚 核心理念](#-核心理念)
 - [🌟 开发阶段](#-开发阶段)
@@ -239,6 +246,42 @@ specify preset add <preset-name>
 举例来说，预设可以重构规范模板以要求监管追溯性，将工作流适配为你所用的方法论（如敏捷、看板、瀑布、用户任务驱动或领域驱动设计），在方案中添加强制安全审查关卡，强制要求测试优先的任务排序，或将整个工作流本地化为其他语言。[海盗语演示](https://github.com/mnriem/spec-kit-pirate-speak-preset-demo)充分展示了定制的深度。多个预设可按优先级叠加使用。
 
 完整命令指南以及解析顺序和优先级叠加说明，请参阅[预设参考文档](https://github.github.io/spec-kit/reference/presets.html)。
+
+## 🔬 研究规范驱动开发（R-SDD）
+
+内置 `rsdd` 扩展把 SDD 的团队协作骨架复用到算法复现和算法开发：
+
+```text
+SDD:   Constitution → Spec → Plan/Tasks → Implement → Test/Review
+R-SDD: Constitution → Research Spec → Protocol/Tasks → Run → Evidence Review
+```
+
+在任意已初始化项目中安装：
+
+```bash
+specify extension add rsdd
+research bootstrap
+```
+
+可以直接安装这个分支，再让真人队友或 AI 编码助手快速接手：
+
+```bash
+uv tool install specify-cli --from git+https://github.com/GloFori/R-SDD.git
+research validate
+research onboard                  # 给人看的简明视图
+research onboard --role reviewer  # 按角色筛选可接任务
+research onboard --json           # 给 AI 使用的机器可读上下文
+```
+
+onboarding 数据包是只读的，并会引用 Research Spec、冻结的 Protocol、
+Experiment Record、关卡、交接和风险等主记录。一个真人可以兼任多个角色，
+但 Protocol 批准和证据评审默认仍由独立真人把关。扩展还附带可改写的
+`AGENTS.md` 指引和 R-SDD PR 交接模板。
+
+R-SDD Core 只保留四类人工维护工件，Registry 和 Project Brain 自动生成；
+Protocol 在 READY 阶段冻结，并严格分离执行状态、证据判断和团队决策。
+领域要求通过 Profile 渐进增加，不改变 Core 状态机。详见
+[R-SDD 概念与使用指南](docs/concepts/rsdd.md)。
 
 ## 📦 捆绑包：面向角色的一键配置
 

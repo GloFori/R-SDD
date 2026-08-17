@@ -583,6 +583,12 @@ from .workflows._commands import (  # noqa: E402,F401
     workflow_step_remove,
 )
 
+
+# ===== Research-Spec-Driven Development Commands =====
+
+from .rsdd._commands import register as _register_research_cmds  # noqa: E402
+_register_research_cmds(app)
+
 def main():
     # On Windows the default stdout/stderr code page (e.g. cp1252) cannot encode
     # the Rich banner and box-drawing glyphs, so the CLI crashes with

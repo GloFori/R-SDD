@@ -2152,6 +2152,29 @@ def workflow_add(
                 _validate_and_install_local(wf_file, str(source_path))
             return
 
+    # Bundled workflows are first-party offline assets, just like bundled
+    # extensions and presets. Prefer the installed wheel/source checkout over
+    # a remote catalog so air-gapped projects can add them by ID.
+    from .._assets import _locate_bundled_workflow
+
+    bundled = _locate_bundled_workflow(source)
+    if bundled is not None:
+        if _workflow_package_has_companions(bundled):
+            _install_workflow_package(
+                project_root,
+                workflows_dir,
+                bundled,
+                f"bundled:{source}",
+                expected_id=source,
+            )
+        else:
+            _validate_and_install_local(
+                bundled / "workflow.yml",
+                f"bundled:{source}",
+                expected_id=source,
+            )
+        return
+
     # Try from catalog
     _install_workflow_from_catalog(project_root, workflows_dir, source)
 

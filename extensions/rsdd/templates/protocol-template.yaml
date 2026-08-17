@@ -1,0 +1,14 @@
+schema_version: "1.0"
+research_id: R000
+status: DRAFT
+owner: ""
+inputs: []
+method: ""
+tasks: []
+outputs: []
+evaluation:
+  criteria: []
+artifacts: []
+risks: []
+ready_review: null
+freeze: null

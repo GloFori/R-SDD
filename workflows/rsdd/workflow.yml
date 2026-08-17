@@ -1,0 +1,97 @@
+schema_version: "1.0"
+
+workflow:
+  id: "rsdd"
+  name: "R-SDD Research Cycle"
+  version: "0.2.0"
+  author: "GloFori"
+  description: "Runs Research Spec → Protocol review → Experiment → Evidence review with exactly two human gates"
+
+requires:
+  speckit_version: ">=0.16.0"
+  integrations:
+    any:
+      - "claude"
+      - "codex"
+      - "copilot"
+      - "gemini"
+      - "opencode"
+
+inputs:
+  research_intent:
+    type: string
+    required: true
+    prompt: "Research question, context, type, and answer criteria"
+  owner:
+    type: string
+    required: true
+    prompt: "Research and initial Experiment Owner"
+  reviewer:
+    type: string
+    required: true
+    prompt: "Independent Reviewer"
+  integration:
+    type: string
+    default: "auto"
+    prompt: "Integration to use; auto uses the initialized integration"
+
+steps:
+  - id: bootstrap
+    command: speckit.rsdd.bootstrap
+    integration: "{{ inputs.integration }}"
+    input:
+      args: ""
+
+  - id: research-spec
+    command: speckit.rsdd.new
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "{{ inputs.research_intent }} owner={{ inputs.owner }}"
+
+  - id: ready-gate
+    type: gate
+    message: "Review the Research Spec, Protocol, answer criteria, ownership, cost, and risks before freezing execution."
+    options: [approve, reject]
+    on_reject: abort
+
+  - id: freeze-protocol
+    command: speckit.rsdd.ready
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "reviewer={{ inputs.reviewer }} use the Research ID created above"
+
+  - id: experiment
+    command: speckit.rsdd.experiment
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "owner={{ inputs.owner }} use the Research ID created above"
+
+  - id: run
+    command: speckit.rsdd.run
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "use the Research and Experiment IDs created above"
+
+  - id: evidence-gate
+    type: gate
+    message: "Independently inspect raw artifacts, Protocol deviations, validity, evidence assessment, and proposed decision."
+    options: [approve, reject]
+    on_reject: abort
+
+  - id: evidence-review
+    command: speckit.rsdd.review
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "reviewer={{ inputs.reviewer }} use the Research and Experiment IDs created above"
+
+  - id: status
+    command: speckit.rsdd.status
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "use the Research ID created above"
+
+  - id: report
+    command: speckit.rsdd.report
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "use the Research ID created above"

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-07-17T00:00:00Z",
-  "catalog_url": "https://raw.githubusercontent.com/github/spec-kit/main/extensions/catalog.json",
+  "updated_at": "2026-08-11T00:00:00Z",
+  "catalog_url": "https://raw.githubusercontent.com/GloFori/R-SDD/main/extensions/catalog.json",
   "extensions": {
     "agent-context": {
       "name": "Coding Agent Context",
@@ -61,6 +61,22 @@
         "branching",
         "workflow",
         "core"
+      ]
+    },
+    "rsdd": {
+      "name": "Research-Spec-Driven Development",
+      "id": "rsdd",
+      "version": "0.2.0",
+      "description": "A lightweight team research workflow that reuses the SDD skeleton: Research Spec, Protocol, Experiment Record, Evidence Review, and generated Brain/Registry",
+      "author": "GloFori",
+      "repository": "https://github.com/GloFori/R-SDD",
+      "bundled": true,
+      "tags": [
+        "research",
+        "collaboration",
+        "reproducibility",
+        "workflow",
+        "ai-native"
       ]
     }
   }
