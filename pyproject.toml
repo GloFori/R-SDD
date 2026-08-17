@@ -18,6 +18,7 @@ dependencies = [
 
 [project.scripts]
 specify = "specify_cli:main"
+research = "specify_cli.rsdd._commands:standalone_main"
 
 [build-system]
 requires = ["hatchling"]
@@ -45,8 +46,10 @@ packages = ["src/specify_cli"]
 "extensions/agent-context" = "specify_cli/core_pack/extensions/agent-context"
 "extensions/assess" = "specify_cli/core_pack/extensions/assess"
 "extensions/bug" = "specify_cli/core_pack/extensions/bug"
+"extensions/rsdd" = "specify_cli/core_pack/extensions/rsdd"
 # Bundled workflows (auto-installed during `specify init`)
 "workflows/speckit" = "specify_cli/core_pack/workflows/speckit"
+"workflows/rsdd" = "specify_cli/core_pack/workflows/rsdd"
 # Bundled presets (installable via `specify preset add <name>` or `specify init --preset <name>`)
 "presets/lean" = "specify_cli/core_pack/presets/lean"
 "presets/constitution-sync" = "specify_cli/core_pack/presets/constitution-sync"

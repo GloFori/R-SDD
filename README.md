@@ -20,6 +20,12 @@
     <a href="./README.zh-CN.md">简体中文</a>
 </p>
 
+> **R-SDD fork:** This repository is maintained at
+> [`GloFori/R-SDD`](https://github.com/GloFori/R-SDD). It preserves the MIT
+> licensed Spec Kit foundation and tracks
+> [`github/spec-kit`](https://github.com/github/spec-kit) as upstream, while
+> R-SDD changes and contributions belong in the GloFori repository.
+
 ---
 
 ## Table of Contents
@@ -31,6 +37,7 @@
 - [🤖 Supported AI Coding Agent Integrations](#-supported-ai-coding-agent-integrations)
 - [🔧 Specify CLI Reference](#-specify-cli-reference)
 - [🧩 Making Spec Kit Your Own: Extensions & Presets](#-making-spec-kit-your-own-extensions--presets)
+- [🔬 Research-Spec-Driven Development](#-research-spec-driven-development)
 - [📦 Bundles: Role-Based Setups](#-bundles-role-based-setups)
 - [📚 Core Philosophy](#-core-philosophy)
 - [🌟 Development Phases](#-development-phases)
@@ -239,6 +246,45 @@ specify preset add <preset-name>
 For example, presets could restructure spec templates to require regulatory traceability, adapt the workflow to fit the methodology you use (e.g., Agile, Kanban, Waterfall, jobs-to-be-done, or domain-driven design), add mandatory security review gates to plans, enforce test-first task ordering, or localize the entire workflow to a different language. The [pirate-speak demo](https://github.com/mnriem/spec-kit-pirate-speak-preset-demo) shows just how deep the customization can go. Multiple presets can be stacked with priority ordering.
 
 See the [Presets reference](https://github.github.io/spec-kit/reference/presets.html) for the full command guide, including resolution order and priority stacking.
+
+## 🔬 Research-Spec-Driven Development
+
+The bundled `rsdd` extension reuses the SDD collaboration skeleton for team
+algorithm reproduction and development:
+
+```text
+SDD:   Constitution → Spec → Plan/Tasks → Implement → Test/Review
+R-SDD: Constitution → Research Spec → Protocol/Tasks → Run → Evidence Review
+```
+
+Install it in any initialized project:
+
+```bash
+specify extension add rsdd
+research bootstrap
+```
+
+To install this fork directly, then orient a human teammate or AI coding agent:
+
+```bash
+uv tool install specify-cli --from git+https://github.com/GloFori/R-SDD.git
+research validate
+research onboard                  # concise human view
+research onboard --role reviewer  # role-focused ready work
+research onboard --json           # machine-readable agent context
+```
+
+The onboarding packet is read-only and links back to primary Research Specs,
+frozen Protocols, Experiment Records, gates, handoffs, and risks. A person can
+hold multiple roles; protocol approval and evidence review remain independent
+human gates by default. The extension also ships adaptable `AGENTS.md` guidance
+and an R-SDD pull-request handoff template.
+
+R-SDD keeps four authored artifact classes, generates the Registry and Project
+Brain, freezes Protocols at READY, and separates execution state, evidence
+assessment, and team decision. Domain-specific requirements are added through
+Profiles without changing the Core state machine. See the
+[R-SDD concept and guide](docs/concepts/rsdd.md).
 
 ## 📦 Bundles: Role-Based Setups
 

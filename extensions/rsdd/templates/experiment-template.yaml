@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: E000
+research_id: R000
+status: PROPOSED
+owner: ""
+protocol:
+  path: ../protocol.yaml
+  sha256: ""
+run:
+  started_at: null
+  completed_at: null
+  code_ref: null
+  command: null
+  environment: null
+  inputs: []
+  outputs: []
+evidence:
+  observations: []
+  metrics: {}
+  artifacts: []
+  protocol_deviations: []
+review: null
+handoff:
+  owner: ""
+  input_refs: []
+  output_refs: []
+  gate_result: null
+  open_risks: []
+  next_owner: ""
+  next_state: RUNNING
+lineage: null

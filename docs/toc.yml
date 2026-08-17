@@ -51,6 +51,8 @@
   items:
     - name: What is SDD?
       href: concepts/sdd.md
+    - name: Research-Spec-Driven Development
+      href: concepts/rsdd.md
     - name: Spec Persistence Models
       href: concepts/spec-persistence.md
     - name: Handling Complex Features

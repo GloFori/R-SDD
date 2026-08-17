@@ -1,0 +1,18 @@
+schema_version: "1.0"
+id: R000
+title: ""
+type: exploratory
+status: DRAFT
+owner: ""
+profile: generic
+question: ""
+motivation: ""
+scope:
+  in: []
+  out: []
+hypothesis: null
+evaluation:
+  answer_criteria: []
+references: []
+protocol_amendments: []
+decision: null

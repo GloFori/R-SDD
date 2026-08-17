@@ -10,6 +10,15 @@
 - [ ] Ran existing tests with `uv sync && uv run pytest`
 - [ ] Tested with a sample project (if applicable)
 
+## R-SDD Handoff (when applicable)
+
+- Research / Experiment:
+- Owner and intended claim:
+- Input / output references:
+- Frozen Protocol digest:
+- Gate result, open risks, and next owner / state:
+- [ ] `research validate` passed
+
 ## AI Disclosure
 
 <!-- Per our Contributing guidelines, AI assistance must be disclosed. -->

@@ -1,0 +1,81 @@
+schema_version: "1.0"
+
+extension:
+  id: rsdd
+  name: "Research-Spec-Driven Development"
+  version: "0.2.0"
+  description: "A lightweight team research workflow that reuses the SDD skeleton: Research Spec, Protocol, Experiment Record, Evidence Review, and generated Brain/Registry"
+  category: "process"
+  effect: "read-write"
+  author: GloFori
+  repository: https://github.com/GloFori/R-SDD
+  license: MIT
+
+requires:
+  speckit_version: ">=0.16.0"
+  tools:
+    - name: research
+      required: true
+
+provides:
+  commands:
+    - name: speckit.rsdd.bootstrap
+      file: commands/speckit.rsdd.bootstrap.md
+      description: "Bootstrap the minimal R-SDD Core in the current Spec Kit project"
+    - name: speckit.rsdd.new
+      file: commands/speckit.rsdd.new.md
+      description: "Create and refine a DRAFT Research Spec and Protocol"
+    - name: speckit.rsdd.ready
+      file: commands/speckit.rsdd.ready.md
+      description: "Review and freeze a Research Protocol at the READY gate"
+    - name: speckit.rsdd.experiment
+      file: commands/speckit.rsdd.experiment.md
+      description: "Create a traceable Experiment Record from a frozen Protocol"
+    - name: speckit.rsdd.run
+      file: commands/speckit.rsdd.run.md
+      description: "Execute an Experiment and register its evidence and artifacts"
+    - name: speckit.rsdd.compare
+      file: commands/speckit.rsdd.compare.md
+      description: "Compare shared numeric metrics without turning deltas into a conclusion"
+    - name: speckit.rsdd.review
+      file: commands/speckit.rsdd.review.md
+      description: "Independently review evidence and record the team decision"
+    - name: speckit.rsdd.revise
+      file: commands/speckit.rsdd.revise.md
+      description: "Reopen a Research Spec and explicitly revise its Protocol"
+    - name: speckit.rsdd.reproduce
+      file: commands/speckit.rsdd.reproduce.md
+      description: "Create an independent lineage-linked reproduction of a reviewed Experiment"
+    - name: speckit.rsdd.report
+      file: commands/speckit.rsdd.report.md
+      description: "Generate a reproducible report from primary R-SDD records"
+    - name: speckit.rsdd.status
+      file: commands/speckit.rsdd.status.md
+      description: "Show current research status, ownership, decisions, and handoffs"
+    - name: speckit.rsdd.onboard
+      file: commands/speckit.rsdd.onboard.md
+      description: "Build a grounded onboarding brief for a human or coding agent"
+
+  templates:
+    - name: rsdd-research-template
+      file: templates/research-template.yaml
+      description: "Research Spec template"
+    - name: rsdd-protocol-template
+      file: templates/protocol-template.yaml
+      description: "Experiment Protocol template"
+    - name: rsdd-experiment-template
+      file: templates/experiment-template.yaml
+      description: "Experiment Record template"
+    - name: rsdd-agent-guidance-template
+      file: templates/agents-template.md
+      description: "Project-level guidance for human and AI research collaborators"
+    - name: rsdd-handoff-pr-template
+      file: templates/pull-request-template.md
+      description: "Pull request handoff checklist for research work"
+
+tags:
+  - "research"
+  - "collaboration"
+  - "reproducibility"
+  - "workflow"
+  - "ai-native"

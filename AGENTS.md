@@ -1,5 +1,23 @@
 # AGENTS.md
 
+## R-SDD Fork Onboarding
+
+This fork is published at `GloFori/R-SDD`; `github/spec-kit` is the upstream
+source, not the contribution target. Before changing R-SDD code or records:
+
+1. Read this file and the R-SDD guide at `docs/concepts/rsdd.md`.
+2. Run `research validate`.
+3. Run `research onboard --json` and follow its primary-record references.
+4. Claim one bounded task with an owner, expected output, verification,
+   reviewer, and next handoff.
+
+Treat `research/` as authored source of truth. Treat `BRAIN.md` and
+`registry.json` as generated views. Do not infer measurements or conclusions
+from chat, Issues, or code, and do not cross READY or evidence-review gates on
+behalf of the responsible human.
+
+---
+
 ## About Spec Kit and Specify
 
 **GitHub Spec Kit** is a comprehensive toolkit for implementing Spec-Driven Development (SDD) - a methodology that emphasizes creating clear specifications before implementation. The toolkit includes templates, scripts, and workflows that guide development teams through a structured approach to building software.
